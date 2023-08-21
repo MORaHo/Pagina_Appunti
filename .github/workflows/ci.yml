@@ -31,4 +31,3 @@ jobs:
 
 
       - run: mkdocs gh-deploy --force
-      - run: mkdocs serve
