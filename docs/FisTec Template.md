@@ -1,8 +1,9 @@
 ---
-date: 
+date: null
 tags: fistec
-parent: 
-child: 
+parent: null
+child: null
 share: true
 ---
+
 
