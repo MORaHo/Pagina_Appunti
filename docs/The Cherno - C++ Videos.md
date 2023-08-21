@@ -1,10 +1,11 @@
 ---
-date: 
+date: null
 tags: videos, cpp, list, dream
-parent: 
-child: 
+parent: null
+child: null
 share: true
 ---
+
 ## Last
 
 - [ ] [REALLY Learning C++](https://www.youtube.com/watch?v=_zQqN5OYCCM&list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&index=95&pp=iAQB) - 8:13 
