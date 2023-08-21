@@ -1,82 +1,73 @@
----
-title: Configuration
----
+Example: Basic MkDocs project for Read the Docs
+===============================================
 
-- [Obsidian Plugin](https://github.com/ObsidianPublisher/obsidian-github-publisher)
-- Template :
-  - To use with [Github Pages](https://github.com/ObsidianPublisher/template-gh-pages)
-  - With [Netlify](https://github.com/ObsidianPublisher/template-netlify-vercel)
-- [Documentation](https://obsidian-publisher.netlify.app/)
-- [Github Discussion](https://github.com/ObsidianPublisher/obsidian-github-publisher/discussions)
+[![Documentation Status](https://readthedocs.org/projects/example-mkdocs-basic/badge/?version=latest)](https://example-mkdocs-basic.readthedocs.io/en/latest/?badge=latest)
 
-## Mkdocs configuration
+This example shows a basic MkDocs project with Read the Docs. You're encouraged to view it to get inspiration and copy & paste from the files in the source code. If you are using Read the Docs for the first time, have a look at the official [Read the Docs Tutorial](https://docs.readthedocs.io/en/stable/tutorial/index.html).
 
-You need to configure the plugin and the `mkdocs` configuration for it to work properly.
+📚 [docs/](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/)<br>
+A basic MkDocs project lives in `docs/`, it was generated using MkDocs defaults. All the `*.md` make up sections in the documentation.
 
-You can find more information about creating the site using the [Material Mkdocs Documentation](https://squidfunk.github.io/mkdocs-material/creating-your-site/#advanced-configuration).
+⚙️ [.readthedocs.yaml](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/.readthedocs.yaml)<br>
+Read the Docs Build configuration is stored in `.readthedocs.yaml`.
 
-In the repository that you cloned, you will find a `mkdocs.yml` file. This file allows you to customize your blog. The most important settings to edit are:
+⚙️ [mkdocs.yml](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/mkdocs.yml)<br>
+A basic [MkDocs configuration](https://www.mkdocs.org/user-guide/configuration/) is stored here, including a few extensions for MkDocs and Markdown. Add your own configurations here, such as extensions and themes. Remember that many extensions and themes require additional Python packages to be installed.
 
-1. `site_name`
-2. `site_description`
-3. `site_url` (critical): By default, it's `https://github_username.github.io/repo_name`[^1]
+📍 [docs/requirements.txt](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/requirements.txt) and [docs/requirements.in](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/requirements.in)<br>
+Python dependencies are [pinned](https://docs.readthedocs.io/en/latest/guides/reproducible-builds.html) (uses [pip-tools](https://pip-tools.readthedocs.io/en/latest/)) here. Make sure to add your Python dependencies to `requirements.txt` or if you choose [pip-tools](https://pip-tools.readthedocs.io/en/latest/), edit `docs/requirements.in` and remember to run to run `pip-compile docs/requirements.in`.
 
-To edit the logo and favicon, first put the chosen files in the `assets/logo` directory, and then change `logo` and `favicon`:
+💡 [docs/api.md](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/api.md)<br>
+We add our example Python module `lumache` in order to auto-generate an API reference. To do this, we use the `:::` syntax, you can read more in the [mkdocstrings documentation](https://mkdocstrings.github.io/).
 
-1. `logo: assets/meta/logo_name.png`
-2. `favicon: assets/meta/favicon.png`
-3. To properly work with SEO, also edit the `extra` with `SEO: 'assets/meta/LOGO_SEO.png'`
+💡 [docs/usage.md](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/usage.md)<br>
+We also include some direct links to a function from the API reference, as well as embedding documentation for the example function `lumache.get_random_recipe`. This functionality is also from the [mkdocstrings](https://mkdocstrings.github.io/python/) extension.
 
-You can also customize:
+💡 [lumache.py](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/lumache.py)<br>
+API docs are generated for this example Python module - they use *docstrings* directly in the documentation, notice how this shows up in the rendered documentation. We use the [Sphinx convention](https://pythonhosted.org/an_example_pypi_project/sphinx.html#function-definitions) for docstrings, however you are free to edit `mkdocs.yml` to change this option to `google` or `numpy`.
 
-- Font
-- Color scheme, palette, and icons
-- Language
+🔢 Git tags versioning<br>
+We use a basic versioning mechanism by adding a git tag for every release of the example project. All releases and their version numbers are visible on
+[example-mkdocs-basic.readthedocs.io](https://example-mkdocs-basic.readthedocs.io/en/latest/).
 
-[Check the documentation for more information](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
+📜 [README.md](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/README.md)<br>
+Contents of this `README.md` are visible on Github and included on [the documentation index page](https://example-mkdocs-basic.readthedocs.io/en/latest/) (Don\'t Repeat Yourself).
 
-You don't need to touch anything in `features` or `markdown_extensions`.
+⁉️ Questions / comments<br>
+If you have questions related to this example, feel free to can ask them as a Github issue [here](https://github.com/readthedocs-examples/example-mkdocs-basic/issues).
 
-### Extra configuration
 
-The last part of the `mkdocs.yml` is a configuration for the `hooks` and the template Jinja displaying the list of articles (`blog_list.html`).
+Example Project usage
+---------------------
 
-There are also :
+This project has a standard MkDocs layout which is built by Read the Docs almost the same way that you would build it locally (on your own laptop!).
 
-- `SEO` (_`string`_): Link to your default image displayed by the SEO.
-- `comments` (_`boolean`_) : Allow the comments block at the end of the page
-- `generate_graph` (_`boolean`_): Generate the [[customization#Graph view|graph view]]
-- `attachments` (_`boolean`_): For [[configuration#Blog list (article listing)]] and image in SEO. Change it according to your Obsidian Plugin settings.
+You can build and view this documentation project locally - we recommend that you activate [a local Python virtual environment first](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment):
 
-#### Blog list (article listing)
+```console
+# Install required Python dependencies (MkDocs etc.)
+pip install -r docs/requirements.txt
 
-The list of articles is configured by the key `blog_list` and can take the following parameters :
-
-- `pagination` (_`boolean, default: True`_): Display a pagination if the list is too long.
-- `pagination_message` (_`boolean, default: True`_): Display a message with the number of posts (article/file) in the folder.
-- `pagination_translation` (`string, default: 'posts in'`): Translation of the pagination's message.
-- `no_page_found` (`string, default: "No pages found!"`): The text to display if no pages were found.
-
-#### Hooks
-
-This part contains the configuration of `hooks`, short python scripts that allow to patch some Obsidian parts incompatible with Mkdocs.
-
-You can configure :
-
-- The suppression of the Obsidian's comments (`%% comments %%`): `strip_comments: true`
-- A fix for headings, which adds a `#` to all headings (except the 6th one) because the Mkdocs TOC considers that the H1 is the main heading/title of the file: `fix_heading: true`
-
-## Local testing
-
-To run the blog locally, you need to install the requirements and run `mkdocs serve`.
-
-`cd publish_blog pip install -r requirements.txt mkdocs serve`
-
-A tip: You can use a [conda](https://docs.conda.io/en/latest/) environment here (or a venv, but I prefer conda). Just use this command:
-
-```bash
-conda create -n Publisher python=3.11
-conda activate Publisher
+# Run the mkdocs development server
+mkdocs serve
 ```
 
-Run this command just before running `pip install`.
+Using the example in your own project
+-------------------------------------
+
+If you are new to Read the Docs, you may want to refer to the [Read the Docs User documentation](https://docs.readthedocs.io/).
+
+If you are copying this code in order to get started with your documentation, you need to:
+
+1. place your `docs/` folder alongside your Python project. If you are starting a new project, you can adapt the `pyproject.toml` example configuration.
+1. use your existing project repository or create a new repository on Github, GitLab, Bitbucket or another host supported by Read the Docs.
+1. copy `mkdocs.yml`, `.readthedocs.yaml` and the `docs/` folder into your project.
+1. customize all the files, replacing example contents.
+1. Rebuild the documenation locally to see that it works.
+1. *Finally*, register your project on Read the Docs, see [Importing Your Documentation](https://docs.readthedocs.io/en/stable/intro/import-guide.html).
+
+
+Read the Docs tutorial
+----------------------
+
+To get started with Read the Docs, you may also refer to the [Read the Docs tutorial](https://docs.readthedocs.io/en/stable/tutorial/). It provides a full walk-through of building an example project similar to the one in this repository.
