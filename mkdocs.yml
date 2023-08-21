@@ -1,6 +1,3 @@
 site_name: Appunti di Matteo
-site_url: https://matteosanderson.it/
+site_url: https://moraho.github.io/
 theme: readthedocs
-
-plugins:
-  - obsidian-bridge
