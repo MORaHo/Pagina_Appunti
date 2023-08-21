@@ -1,0 +1,6 @@
+site_name: Appunti di Matteo
+site_url: https://matteosanderson.it/
+theme: readthedocs
+
+plugins:
+  - obsidian-bridge
