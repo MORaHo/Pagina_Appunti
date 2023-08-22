@@ -11,4 +11,4 @@ share: true
 
 ## Test Header 2
 
-![Drawing 2023-08-19 16.08.21.excalidraw](../Drawing%202023-08-19%2016.08.21.excalidraw.md)
+![](./images/Drawing 2023-08-22 23.38.00.excalidraw.png)
